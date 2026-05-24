@@ -1,1 +1,95 @@
+Use the INSERT INTO command with SELECT statement to add new employees to the Employees table based on data from another table.
+Use the UPDATE command with a subquery to update the salaries of employees in a specific department.
+Use the DELETE command with a subquery to remove employees who are no longer working on any projects.
+
+
+
+
+
+
+CREATE TABLE EMPLOYEE(
+  EMP_NM VARCHAR(12),
+  EMP_ID INT(12),
+  EMP_SALARY DECIMAL(7,2));
+SELECT *FROM EMPLOYEE
+
+
+
+
+
+
+
+
+CREATE TABLE NEWEMPLOYEE(
+  EMP_NM VARCHAR(12),
+  EMP_ID INT(12),
+  EMP_SALARY DECIMAL(7,2));
+SELECT *FROM NEWEMPLOYEE
+INSERT INTO EMPLOYEE
+VALUES('JAGADEESH','111','8000.10'),
+('VENKEY','55','50000.89'),
+('RAJU','31','63563.78');
+SELECT *FROM EMPLOYEE
+
+
+
+---SUBQUERY---
+
+INSERT INTO EMPLOYEE (EMP_NM, EMP_ID, EMP_SALARY)
+SELECT EMP_NM, EMP_ID, EMP_SALARY
+FROM NEWEMPLOYEE;
+
+
+
+
+INSERT INTO EMPLOYEE
+VALUES('JAGADEESH','111','8000.10'),
+('VENKEY','55','50000.89'),
+('RAJU','31','63563.78');
+SELECT *FROM EMPLOYEE
+
+
+
+
+UPDATE EMPLOYEE
+SET EMP_SALARY = EMP_SALARY + 5000
+WHERE EMP_ID IN (
+    SELECT EMP_ID
+    FROM PROJECT
+    WHERE EMP_ID = 2
+);
+
+
+
+
+--OUTPUT-- USING SUBQUERY--
+
+
+EMPLOYEE
+EMP_NM	EMP_ID	EMP_SALARY
+Ravi	1	35000
+Suresh	2	45000 ----UPDATE---
+Anitha	3	45000
+NEWEMPLOYEE
+EMP_NM	EMP_ID	EMP_SALARY
+Ravi	1	35000
+Suresh	2	40000    --NOT UPDATE
+Anitha	3	45000
+
+
+---------------------------------------------------------------------------------------------------
+DELETE FROM EMPLOYEE
+WHERE EMP_ID NOT IN (
+    SELECT EMP_ID
+    FROM Projects
+);
+
+
+---NO RESULT BCZ THE PROJECT COLUM IS NOT AVALIBLE INTO EMPLOYEE TABLE---
+
+
+
+
+
+
 

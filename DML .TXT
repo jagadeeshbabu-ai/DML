@@ -1,0 +1,27 @@
+
+
+Create table project(
+  projectID INT,
+  projectname varchar(13),
+  departmentid int,
+startdate date 
+);
+insert into project
+ VALUES(101, 'Inventory System', 1, '2024-01-10'),
+(102, 'Banking App', 2, '2024-02-15'),
+(103, 'AI Chatbot', 3, '2024-03-20'),
+(104, 'E-Commerce Website', 2, '2024-04-05'),
+(105, 'Hospital Management', 1, '2024-05-12');
+SELECT * FROM project
+
+
+
+---OUTPUT---
+
+Project
+projectID	projectname  	departmentid	startdate
+101	   Inventory System	    1            	2024-01-10
+102	   Banking App         	2	            2024-02-15
+103	   AI Chatbot	         3           	2024-03-20
+104	  E-Commerce Website	 2	              2024-04-05
+105	  Hospital Management	 1	               2024-05-12
